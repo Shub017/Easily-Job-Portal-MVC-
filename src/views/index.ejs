@@ -1,0 +1,25 @@
+<div class="display-3 bg-transparent" style="color: brown;font-weight: bold;">
+  <div class="card-body my-element animate__animated animate__rollIn">
+    "Connecting Talent to Opportunity: Your Gateway to a Fulfilling Career Journey."
+  </div>
+  <div class="display-3 text-primary animate__animated animate__fadeInBottomLeft" style="font-family: bold; margin-top: 100px">
+    Are you a job Seeker or Employer?
+  </div>
+  
+  
+</div>
+
+
+<!-- Display the last visited page and time -->
+<div class="container mt-3 text-primary">
+  <p>Last Visited Time: <span id="lastVisitedTime"><%= new Date(lastVisitedTime).toLocaleString() %></span></p>
+</div>
+
+
+<!-- Buttons for Employee and Employer -->
+<a href="/Availablejobs">
+  <button type="button" class="btn btn-primary btn-lg animate__animated animate__zoomInDown" style="margin-top: 50px; margin-left: 190px;">Job Seeker</button>
+</a>
+<a href="/login">
+<button type="button" class="btn btn-secondary btn-lg animate__animated animate__zoomInDown" style="margin-top: 50px; margin-left: 100px;">I am an Employer</button>
+</a>

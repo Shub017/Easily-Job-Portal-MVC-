@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-between p-2 bd-highlight">
+<% jobs.forEach(job => { %>
+    <div class="card bg-info animate__animated animate__zoomInDown" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title display-4 fw-bolder"><%= job.companyName %></h5>
+            <p class="card-text display-5 fst-italic"> <%=  job.jobCategory %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item fst-italic">Location: <%= job.jobLocation %></li>
+            <!-- <li class="list-group-item fst-italic">Salary: <%= job.salary %></li>
+            <li class="list-group-item fst-italic">Skills: <%= job.skillsRequired.join(', ') %></li>
+            <li class="list-group-item fst-italic">Posted on: <%= job.jobPosted %></li>
+            <li class="list-group-item fst-italic">Deadline to apply: <%= job.deadLineToApply %></li> -->
+        </ul>
+        <div class="card-body">
+            <a href="/moreDetailsAboutJob?id=<%= job.ID %>" class="card-link"><button type="button" class="btn btn-danger">More Details</button></a>
+        </div>
+        
+    </div>
+<% }) %>
+</div>

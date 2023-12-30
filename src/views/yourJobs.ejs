@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-between p-2 bd-highlight">
+    <% let jobOffered = false; %>
+    <% if (jobs.length > 0) { %>
+        <% jobs.forEach(job => { %>
+            <% if (job.jobDesignation == userEmail) { %>
+                <!-- Only display jobs for the current user -->
+                <div class="card bg-info animate__animated animate__zoomInDown" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title display-4 fw-bolder"><%= job.companyName %></h5>
+                        <p class="card-text display-5 fst-italic"> <%= job.jobCategory %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item fst-italic">Location: <%= job.jobLocation %></li>
+                        <!-- Other job details go here -->
+                    </ul>
+                    <div class="card-body">
+                        <a href="/moreDetailsAboutJob?id=<%= job.ID %>" class="card-link">
+                            <button type="button" class="btn btn-warning">More Details</button>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <!-- Form for deleting the job -->
+                        <form action="/deleteJob" method="POST">
+                            <input type="hidden" name="jobId" value="<%= job.ID %>">
+                            <button type="submit" class="btn btn-danger">Delete Job</button>
+                        </form>
+                        
+                        
+                        <!-- Form for updating the job using a link -->
+                        <form action="/getApplicants" method="GET">
+                            <input type="hidden" name="jobId" value="<%= job.ID %>">
+                            <!-- Use an anchor element styled as a button -->
+                            <a href="/getApplicants?jobId=<%= job.ID %>" class="btn btn-success">View Applicants</a>
+                        </form>
+                        
+
+
+                        <!-- Form for updating the job using a link -->
+                        <form action="/updateJob" method="GET">
+                            <input type="hidden" name="jobId" value="<%= job.ID %>">
+                            <!-- Use an anchor element styled as a button -->
+                            <a href="/updateJob?jobId=<%= job.ID %>" class="btn btn-success">Update Job</a>
+                        </form>
+                    </div>
+                </div>
+                <% jobOffered = true; %>
+            <% } %>
+        <% }) %>
+    <% } %>
+    
+    <% if (!jobOffered) { %>
+        <!-- Display a message when no jobs exist -->
+        <div class="card bg-info animate__animated animate__zoomInDown" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title display-4 fw-bolder">No Jobs Available</h5>
+                <p class="card-text display-5 fst-italic">You have Offered no jobs.</p>
+            </div>
+        </div>
+    <% } %>
+</div>

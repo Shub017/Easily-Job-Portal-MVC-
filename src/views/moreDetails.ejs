@@ -1,0 +1,66 @@
+<!-- moreDetailsAboutJob.ejs -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card bg-info animate__animated animate__zoomInDown">
+                <div class="card-header">
+                    <h5 class="card-title display-4 fw-bolder"><%= job.companyName %></h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted display-5 fst-italic"><%= job.jobCategory %></h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Location:</strong> <%= job.jobLocation %></li>
+                    <li class="list-group-item"><strong>Salary:</strong> <%= job.salary %></li>
+                    <li class="list-group-item"><strong>Skills:</strong> <%= job.skillsRequired.join(', ') %></li>
+                    <li class="list-group-item"><strong>Posted on:</strong> <%= job.jobPosted %></li>
+                    <li class="list-group-item"><strong>Deadline to apply:</strong> <%= job.deadLineToApply %></li>
+                </ul>
+                <div class="card-footer">
+                    <a href="/Availablejobs" class="btn btn-danger">Back to Jobs</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Apply for the Job
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-black">
+            <div class="modal-header">
+                <h5 class="modal-title display-3 text-white fst-italic" id="exampleModalLabel">Fill The Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="applicationForm" action="/applyForJob"  method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="name" class="form-label text-white">Your Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-white">Your Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label text-white">Your Contact Number:</label>
+                        <input type="tel" class="form-control" id="contact" name="contact" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cv" class="form-label text-white">Upload CV:</label>
+                        <input type="file" class="form-control" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                    </div>
+                    <!-- Add more relevant questions here -->
+
+                    <button type="submit" class="btn btn-primary" id="submitApplication">Submit Application</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
